@@ -1,17 +1,11 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import axios from "axios";
 import PostCard from "./Postcard";
+
+import { usePosts } from "../contexts/PostsContext";
+
 function PostList() {
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    axios.get("http://localhost:3000/post").then((res) => {
-      const response = res.data.data;
-
-      setPosts(response);
-    });
-  }, []);
+  const { posts } = usePosts();
 
   return (
     <>
